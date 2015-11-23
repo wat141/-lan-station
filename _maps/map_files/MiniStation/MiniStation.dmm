@@ -861,7 +861,7 @@
 "aqC" = (/obj/structure/table/woodentable,/obj/item/weapon/paper_bin{pixel_x = 1; pixel_y = 9},/obj/item/device/paicard,/obj/item/weapon/coin/silver,/obj/item/weapon/pen,/obj/machinery/light,/obj/item/weapon/storage/toolbox/mechanical,/turf/simulated/floor{icon_state = "neutral"},/area/hallway/primary/central)
 "aqD" = (/obj/machinery/bookbinder,/turf/simulated/floor{icon_state = "neutral"},/area/hallway/primary/central)
 "aqE" = (/obj/machinery/libraryscanner,/turf/simulated/floor{icon_state = "neutral"},/area/hallway/primary/central)
-"aqF" = (/obj/structure/table/woodentable,/turf/simulated/floor{icon_state = "neutral"; dir = 6},/area/hallway/primary/central)
+"aqF" = (/obj/structure/table/woodentable,/obj/machinery/librarycomp,/turf/simulated/floor{icon_state = "neutral"; dir = 6},/area/hallway/primary/central)
 "aqG" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/simulated/wall,/area/hallway/primary/central)
 "aqH" = (/turf/simulated/wall,/area/crew_quarters/theatre)
 "aqI" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced,/obj/structure/grille,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/simulated/floor/plating,/area/crew_quarters/theatre)
