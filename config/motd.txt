@@ -1,5 +1,4 @@
 <!-- Most valid html will work in here, excluding images. -->
-
-<h1>Welcome to Space Station 13!</h1>
-
-<i>This server is running a NTstation 13 Github build.</i>
+<i><h1 style="color:red;text-decoration:none;font-family:system">/lan/station</h1></i>
+<span style="text-decoration:none!important;">N&#227;o mate sem raz&#227;o, <b>escreva corretamente</b> e mantenha o roleplay. Veja as regras completas em http://lanstation.wikia.com/wiki/Regras.</span>
+<span style="text-decoration:none!important;">Novos jogadores, leiam:  http://lanstation.wikia.com/wiki/Guia_para_novos_jogadores.</span>
