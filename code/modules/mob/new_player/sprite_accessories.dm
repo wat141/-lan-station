@@ -41,9 +41,6 @@
 	var/icon_state		//the icon_state of the accessory
 	var/name			//the preview name of the accessory
 	var/gender = NEUTER	//Determines if the accessory will be skipped or included in random hair generations
-	var/gender_specific //Something that can be worn by either gender, but looks different on each
-	//var/color_src = MUTCOLORS	//Currently only used by mutantparts so don't worry about hair and stuff. This is the source that this accessory will get its color from. Default is MUTCOLOR, but can also be HAIR, FACEHAIR, EYECOLOR and 0 if none.
-	var/hasinner		//Decides if this sprite has an "inner" part, such as the fleshy parts on ears.
 
 //////////////////////
 // Hair Definitions //
@@ -51,514 +48,496 @@
 /datum/sprite_accessory/hair
 	icon = 'icons/mob/human_face.dmi'	  // default icon for all hairs
 
-/datum/sprite_accessory/hair/short
-	name = "Short Hair"	  // try to capatilize the names please~
-	icon_state = "hair_a" // you do not need to define _s or _l sub-states, game automatically does this for you
-
-/datum/sprite_accessory/hair/shorthair2
-	name = "Short Hair 2"
-	icon_state = "hair_shorthair2"
-
-/datum/sprite_accessory/hair/shorthair3
-	name = "Short Hair 3"
-	icon_state = "hair_shorthair3"
-
-/datum/sprite_accessory/hair/cut
-	name = "Cut Hair"
-	icon_state = "hair_c"
-
-/datum/sprite_accessory/hair/long
-	name = "Shoulder-length Hair"
-	icon_state = "hair_b"
-
-/datum/sprite_accessory/hair/longer
-	name = "Long Hair"
-	icon_state = "hair_vlong"
-
-/datum/sprite_accessory/hair/over_eye
-	name = "Over Eye"
-	icon_state = "hair_shortovereye"
-
-/datum/sprite_accessory/hair/long_over_eye
-	name = "Long Over Eye"
-	icon_state = "hair_longovereye"
-
-/datum/sprite_accessory/hair/longest2
-	name = "Very Long Over Eye"
-	icon_state = "hair_longest2"
-
-/datum/sprite_accessory/hair/longest
-	name = "Very Long Hair"
-	icon_state = "hair_longest"
-
-/datum/sprite_accessory/hair/longfringe
-	name = "Long Fringe"
-	icon_state = "hair_longfringe"
-
-/datum/sprite_accessory/hair/longestalt
-	name = "Longer Fringe"
-	icon_state = "hair_vlongfringe"
-
-/datum/sprite_accessory/hair/gentle
-	name = "Gentle"
-	icon_state = "hair_gentle"
-
-/datum/sprite_accessory/hair/halfbang
-	name = "Half-banged Hair"
-	icon_state = "hair_halfbang"
-
-/datum/sprite_accessory/hair/halfbang2
-	name = "Half-banged Hair 2"
-	icon_state = "hair_halfbang2"
-
-/datum/sprite_accessory/hair/ponytail1
-	name = "Ponytail"
-	icon_state = "hair_ponytail"
-
-/datum/sprite_accessory/hair/ponytail2
-	name = "Ponytail 2"
-	icon_state = "hair_ponytail2"
-
-/datum/sprite_accessory/hair/ponytail3
-	name = "Ponytail 3"
-	icon_state = "hair_ponytail3"
-
-/datum/sprite_accessory/hair/ponytail4
-	name = "Ponytail 4"
-	icon_state = "hair_ponytail4"
-
-/datum/sprite_accessory/hair/ponytail5
-	name = "Ponytail 5"
-	icon_state = "hair_ponytail5"
-
-
-/datum/sprite_accessory/hair/sidetail
-	name = "Side Pony"
-	icon_state = "hair_sidetail"
-
-/datum/sprite_accessory/hair/sidetail2
-	name = "Side Pony 2"
-	icon_state = "hair_sidetail2"
-
-/datum/sprite_accessory/hair/sidetail3
-	name = "Side Pony 3"
-	icon_state = "hair_sidetail3"
-
-/datum/sprite_accessory/hair/sidetail4
-	name = "Side Pony 4"
-	icon_state = "hair_sidetail4"
-
-/datum/sprite_accessory/hair/oneshoulder
-	name = "One Shoulder"
-	icon_state = "hair_oneshoulder"
-
-/datum/sprite_accessory/hair/tressshoulder
-	name = "Tress Shoulder"
-	icon_state = "hair_tressshoulder"
-
-/datum/sprite_accessory/hair/parted
-	name = "Parted"
-	icon_state = "hair_parted"
-
-/datum/sprite_accessory/hair/pompadour
-	name = "Pompadour"
-	icon_state = "hair_pompadour"
-
-/datum/sprite_accessory/hair/bigpompadour
-	name = "Big Pompadour"
-	icon_state = "hair_bigpompadour"
-
-/datum/sprite_accessory/hair/quiff
-	name = "Quiff"
-	icon_state = "hair_quiff"
-
-/datum/sprite_accessory/hair/bedhead
-	name = "Bedhead"
-	icon_state = "hair_bedhead"
-
-/datum/sprite_accessory/hair/bedhead2
-	name = "Bedhead 2"
-	icon_state = "hair_bedheadv2"
-
-/datum/sprite_accessory/hair/bedhead3
-	name = "Bedhead 3"
-	icon_state = "hair_bedheadv3"
-
-/datum/sprite_accessory/hair/messy
-	name = "Messy"
-	icon_state = "hair_messy"
-
-/datum/sprite_accessory/hair/beehive
-	name = "Beehive"
-	icon_state = "hair_beehive"
-
-/datum/sprite_accessory/hair/beehive2
-	name = "Beehive 2"
-	icon_state = "hair_beehivev2"
-
-/datum/sprite_accessory/hair/bobcurl
-	name = "Bobcurl"
-	icon_state = "hair_bobcurl"
-
-/datum/sprite_accessory/hair/bob
-	name = "Bob"
-	icon_state = "hair_bobcut"
-
-/datum/sprite_accessory/hair/bowl
-	name = "Bowl"
-	icon_state = "hair_bowlcut"
-
-/datum/sprite_accessory/hair/buzz
-	name = "Buzzcut"
-	icon_state = "hair_buzzcut"
-
-/datum/sprite_accessory/hair/crew
-	name = "Crewcut"
-	icon_state = "hair_crewcut"
-
-/datum/sprite_accessory/hair/combover
-	name = "Combover"
-	icon_state = "hair_combover"
-
-/datum/sprite_accessory/hair/devillock
-	name = "Devil Lock"
-	icon_state = "hair_devilock"
-
-/datum/sprite_accessory/hair/dreadlocks
-	name = "Dreadlocks"
-	icon_state = "hair_dreads"
-
-/datum/sprite_accessory/hair/curls
-	name = "Curls"
-	icon_state = "hair_curls"
-
-/datum/sprite_accessory/hair/afro
-	name = "Afro"
-	icon_state = "hair_afro"
-
-/datum/sprite_accessory/hair/afro2
-	name = "Afro 2"
-	icon_state = "hair_afro2"
-
-/datum/sprite_accessory/hair/afro_large
-	name = "Big Afro"
-	icon_state = "hair_bigafro"
-
-/datum/sprite_accessory/hair/sargeant
-	name = "Flat Top"
-	icon_state = "hair_sargeant"
-
-/datum/sprite_accessory/hair/emo
-	name = "Emo"
-	icon_state = "hair_emo"
-
-/datum/sprite_accessory/hair/longemo
-	name = "Long Emo"
-	icon_state = "hair_longemo"
-
-/datum/sprite_accessory/hair/fag
-	name = "Flow Hair"
-	icon_state = "hair_f"
-
-/datum/sprite_accessory/hair/feather
-	name = "Feather"
-	icon_state = "hair_feather"
-
-/datum/sprite_accessory/hair/hitop
-	name = "Hitop"
-	icon_state = "hair_hitop"
-
-/datum/sprite_accessory/hair/mohawk
-	name = "Mohawk"
-	icon_state = "hair_d"
-
-/datum/sprite_accessory/hair/reversemohawk
-	name = "Reverse Mohawk"
-	icon_state = "hair_reversemohawk"
-
-/datum/sprite_accessory/hair/jensen
-	name = "Jensen Hair"
-	icon_state = "hair_jensen"
-
-/datum/sprite_accessory/hair/gelled
-	name = "Gelled Back"
-	icon_state = "hair_gelled"
-
-/datum/sprite_accessory/hair/spiky
-	name = "Spiky"
-	icon_state = "hair_spikey"
-
-/datum/sprite_accessory/hair/spiky2
-	name = "Spiky 2"
-	icon_state = "hair_spiky"
-
-/datum/sprite_accessory/hair/spiky3
-	name = "Spiky 3"
-	icon_state = "hair_spiky2"
-
-/datum/sprite_accessory/hair/protagonist
-	name = "Slightly long"
-	icon_state = "hair_protagonist"
-
-/datum/sprite_accessory/hair/kusangi
-	name = "Kusanagi Hair"
-	icon_state = "hair_kusanagi"
-
-/datum/sprite_accessory/hair/kagami
-	name = "Pigtails"
-	icon_state = "hair_kagami"
-
-/datum/sprite_accessory/hair/pigtail
-	name = "Pigtails 2"
-	icon_state = "hair_pigtails"
-
-/datum/sprite_accessory/hair/pigtail
-	name = "Pigtails 3"
-	icon_state = "hair_pigtails2"
-
-/datum/sprite_accessory/hair/himecut
-	name = "Hime Cut"
-	icon_state = "hair_himecut"
-
-/datum/sprite_accessory/hair/himecut2
-	name = "Hime Cut 2"
-	icon_state = "hair_himecut2"
-
-/datum/sprite_accessory/hair/himeup
-	name = "Hime Updo"
-	icon_state = "hair_himeup"
-
-/datum/sprite_accessory/hair/antenna
-	name = "Ahoge"
-	icon_state = "hair_antenna"
-
-/datum/sprite_accessory/hair/front_braid
-	name = "Braided front"
-	icon_state = "hair_braidfront"
-
-/datum/sprite_accessory/hair/lowbraid
-	name = "Low Braid"
-	icon_state = "hair_hbraid"
-
-/datum/sprite_accessory/hair/not_floorlength_braid
-	name = "High Braid"
-	icon_state = "hair_braid2"
-
-/datum/sprite_accessory/hair/shortbraid
-	name = "Short Braid"
-	icon_state = "hair_shortbraid"
-
-/datum/sprite_accessory/hair/braid
-	name = "Floorlength Braid"
-	icon_state = "hair_braid"
-
-/datum/sprite_accessory/hair/odango
-	name = "Odango"
-	icon_state = "hair_odango"
-
-/datum/sprite_accessory/hair/ombre
-	name = "Ombre"
-	icon_state = "hair_ombre"
-
-/datum/sprite_accessory/hair/updo
-	name = "Updo"
-	icon_state = "hair_updo"
-
-/datum/sprite_accessory/hair/skinhead
-	name = "Skinhead"
-	icon_state = "hair_skinhead"
-
-/datum/sprite_accessory/hair/longbangs
-	name = "Long Bangs"
-	icon_state = "hair_lbangs"
-
-/datum/sprite_accessory/hair/balding
-	name = "Balding Hair"
-	icon_state = "hair_e"
-
-/datum/sprite_accessory/hair/bald
-	name = "Bald"
-	icon_state = null
-
-/datum/sprite_accessory/hair/parted
-	name = "Side Part"
-	icon_state = "hair_part"
-
-/datum/sprite_accessory/hair/braided
-	name = "Braided"
-	icon_state = "hair_braided"
-
-/datum/sprite_accessory/hair/bun
-	name = "Bun Head"
-	icon_state = "hair_bun"
-
-/datum/sprite_accessory/hair/bun2
-	name = "Bun Head 2"
-	icon_state = "hair_bunhead2"
-
-/datum/sprite_accessory/hair/braidtail
-	name = "Braided Tail"
-	icon_state = "hair_braidtail"
-
-/datum/sprite_accessory/hair/bigflattop
-	name = "Big Flat Top"
-	icon_state = "hair_bigflattop"
-
-/datum/sprite_accessory/hair/drillhair
-	name = "Drill Hair"
-	icon_state = "hair_drillhair"
-
-/datum/sprite_accessory/hair/keanu
-	name = "Keanu Hair"
-	icon_state = "hair_keanu"
-
-/datum/sprite_accessory/hair/swept
-	name = "Swept Back Hair"
-	icon_state = "hair_swept"
-
-/datum/sprite_accessory/hair/swept2
-	name = "Swept Back Hair 2"
-	icon_state = "hair_swept2"
-
-/datum/sprite_accessory/hair/business
-	name = "Business Hair"
-	icon_state = "hair_business"
-
-/datum/sprite_accessory/hair/business2
-	name = "Business Hair 2"
-	icon_state = "hair_business2"
-
-/datum/sprite_accessory/hair/business3
-	name = "Business Hair 3"
-	icon_state = "hair_business3"
-
-/datum/sprite_accessory/hair/business4
-	name = "Business Hair 4"
-	icon_state = "hair_business4"
-
-/datum/sprite_accessory/hair/hedgehog
-	name = "Hedgehog Hair"
-	icon_state = "hair_hedgehog"
-
-/datum/sprite_accessory/hair/bob
-	name = "Bob Hair"
-	icon_state = "hair_bob"
-
-/datum/sprite_accessory/hair/bob2
-	name = "Bob Hair 2"
-	icon_state = "hair_bob2"
-
-/datum/sprite_accessory/hair/long
-	name = "Long Hair 1"
-	icon_state = "hair_long"
-
-/datum/sprite_accessory/hair/long2
-	name = "Long Hair 2"
-	icon_state = "hair_long2"
-
-/datum/sprite_accessory/hair/pixie
-	name = "Pixie Cut"
-	icon_state = "hair_pixie"
-
-/datum/sprite_accessory/hair/megaeyebrows
-	name = "Mega Eyebrows"
-	icon_state = "hair_megaeyebrows"
-
-/datum/sprite_accessory/hair/highponytail
-	name = "High Ponytail"
-	icon_state = "hair_highponytail"
-
-/datum/sprite_accessory/hair/longponytail
-	name = "Long Ponytail"
-	icon_state = "hair_longstraightponytail"
-
-/datum/sprite_accessory/hair/sidepartlongalt
-	name = "Long Side Part"
-	icon_state = "hair_longsidepart"
+	short
+		name = "Short Hair"	  // try to capatilize the names please~
+		icon_state = "hair_a" // you do not need to define _s or _l sub-states, game automatically does this for you
+
+	shorthair2
+		name = "Short Hair 2"
+		icon_state = "hair_shorthair2"
+
+	cut
+		name = "Cut Hair"
+		icon_state = "hair_c"
+
+	long
+		name = "Shoulder-length Hair"
+		icon_state = "hair_b"
+
+	longer
+		name = "Long Hair"
+		icon_state = "hair_vlong"
+
+	long_over_eye
+		name = "Over-eye Long"
+		icon_state = "hair_longovereye"
+
+	short_over_eye
+		name = "Over-eye Short"
+		icon_state = "hair_shortovereye"
+
+	longest
+		name = "Very Long Hair"
+		icon_state = "hair_longest"
+
+	longest2
+		name = "Very Long Over Eye"
+		icon_state = "hair_longest2"
+
+	longfringe
+		name = "Long Fringe"
+		icon_state = "hair_longfringe"
+
+	longestalt
+		name = "Longer Fringe"
+		icon_state = "hair_vlongfringe"
+
+	gentle
+		name = "Gentle"
+		icon_state = "hair_gentle"
+
+	halfbang
+		name = "Half-banged Hair"
+		icon_state = "hair_halfbang"
+
+	halfbangalt
+		name = "Half-banged Hair Alt"
+		icon_state = "hair_halfbang_alt"
+
+	ponytail1
+		name = "Ponytail 1"
+		icon_state = "hair_ponytail"
+
+	ponytail2
+		name = "Ponytail 2"
+		icon_state = "hair_pa"
+
+	ponytail3
+		name = "Ponytail 3"
+		icon_state = "hair_ponytail3"
+
+	ponytail4
+		name = "Ponytail 4"
+		icon_state = "hair_ponytail4"
+
+	side_tail
+		name = "Side Pony"
+		icon_state = "hair_sidetail"
+
+	side_tail2
+		name = "Side Pony 2"
+		icon_state = "hair_sidetail2"
+
+	side_tail3
+		name = "Side Pony 3"
+		icon_state = "hair_stail"
+
+	oneshoulder
+		name = "One Shoulder"
+		icon_state = "hair_oneshoulder"
+
+	tressshoulder
+		name = "Tress Shoulder"
+		icon_state = "hair_tressshoulder"
+
+	parted
+		name = "Parted"
+		icon_state = "hair_parted"
+
+	pompadour
+		name = "Pompadour"
+		icon_state = "hair_pompadour"
+
+	quiff
+		name = "Quiff"
+		icon_state = "hair_quiff"
+
+	bedhead
+		name = "Bedhead"
+		icon_state = "hair_bedhead"
+
+	bedhead2
+		name = "Bedhead 2"
+		icon_state = "hair_bedheadv2"
+
+	bedhead3
+		name = "Bedhead 3"
+		icon_state = "hair_bedheadv3"
+
+	messy
+		name = "Messy"
+		icon_state = "hair_messy"
+
+	beehive
+		name = "Beehive"
+		icon_state = "hair_beehive"
+
+	beehive2
+		name = "Beehive 2"
+		icon_state = "hair_beehivev2"
+
+	bobcurl
+		name = "Bobcurl"
+		icon_state = "hair_bobcurl"
+
+	bob
+		name = "Bob"
+		icon_state = "hair_bobcut"
+
+	bowl
+		name = "Bowl"
+		icon_state = "hair_bowlcut"
+
+	buzz
+		name = "Buzzcut"
+		icon_state = "hair_buzzcut"
+
+	crew
+		name = "Crewcut"
+		icon_state = "hair_crewcut"
+
+	combover
+		name = "Combover"
+		icon_state = "hair_combover"
+
+	devillock
+		name = "Devil Lock"
+		icon_state = "hair_devilock"
+
+	dreadlocks
+		name = "Dreadlocks"
+		icon_state = "hair_dreads"
+
+	curls
+		name = "Curls"
+		icon_state = "hair_curls"
+
+	afro
+		name = "Afro"
+		icon_state = "hair_afro"
+
+	afro2
+		name = "Afro 2"
+		icon_state = "hair_afro2"
+
+	afro_large
+		name = "Big Afro"
+		icon_state = "hair_bigafro"
+
+	sargeant
+		name = "Flat Top"
+		icon_state = "hair_sargeant"
+
+	emo
+		name = "Emo"
+		icon_state = "hair_emo"
+
+	longemo
+		name = "Long Emo"
+		icon_state = "hair_longemo"
+
+	fag
+		name = "Flow Hair"
+		icon_state = "hair_f"
+
+	feather
+		name = "Feather"
+		icon_state = "hair_feather"
+
+	hitop
+		name = "Hitop"
+		icon_state = "hair_hitop"
+
+	mohawk
+		name = "Mohawk"
+		icon_state = "hair_d"
+
+	reversemohawk
+		name = "Reverse Mohawk"
+		icon_state = "hair_reversemohawk"
+
+	jensen
+		name = "Adam Jensen Hair"
+		icon_state = "hair_jensen"
+
+	gelled
+		name = "Gelled Back"
+		icon_state = "hair_gelled"
+
+	spiky
+		name = "Spiky"
+		icon_state = "hair_spikey"
+
+	protagonist
+		name = "Slightly long"
+		icon_state = "hair_protagonist"
+
+	kusangi
+		name = "Kusanagi Hair"
+		icon_state = "hair_kusanagi"
+
+	kagami
+		name = "Pigtails"
+		icon_state = "hair_kagami"
+
+	himecut
+		name = "Hime Cut"
+		icon_state = "hair_himecut"
+
+	himeup
+		name = "Hime Updo"
+		icon_state = "hair_himeup"
+
+	antenna
+		name = "Ahoge"
+		icon_state = "hair_antenna"
+
+	pigtail
+		name = "Pig tails"
+		icon_state = "hair_pigtails"
+
+	front_braid
+		name = "Braided front"
+		icon_state = "hair_braidfront"
+
+	lowbraid
+		name = "Low Braid"
+		icon_state = "hair_hbraid"
+
+	not_floorlength_braid
+		name = "High Braid"
+		icon_state = "hair_braid2"
+
+	braid
+		name = "Floorlength Braid"
+		icon_state = "hair_braid"
+
+	shortbraid
+		name = "Short Floorlength Braid"
+		icon_state = "hair_shortbraid"
+
+	odango
+		name = "Odango"
+		icon_state = "hair_odango"
+
+	ombre
+		name = "Ombre"
+		icon_state = "hair_ombre"
+
+	updo
+		name = "Updo"
+		icon_state = "hair_updo"
+
+	skinhead
+		name = "Skinhead"
+		icon_state = "hair_skinhead"
+
+	longbangs
+		name = "Long Bangs"
+		icon_state = "hair_lbangs"
+
+	balding
+		name = "Balding Hair"
+		icon_state = "hair_e"
+
+	bald
+		name = "Bald"
+		icon_state = null
+
+	parted
+		name = "Side Part"
+		icon_state = "hair_part"
+
+	braided
+		name = "Braided"
+		icon_state = "hair_braided"
+
+	bun
+		name = "Bun Head"
+		icon_state = "hair_bun"
+
+	braidtail
+		name = "Braided Tail"
+		icon_state = "hair_braidtail"
+
+	familyman
+		name = "Family Man"
+		icon_state = "hair_thefamilyman"
+
+	drillruru
+		name = "Drillruru"
+		icon_state = "hair_drillruru"
+
+	dandypomp
+		name = "Dandy Pompadour"
+		icon_state = "hair_dandypompadour"
+
+	poofy
+		name = "Poofy"
+		icon_state = "hair_poofy"
+
+	crono
+		name = "Chrono"
+		icon_state = "hair_toriyama1"
+
+	vegeta
+		name = "Vegeta Hair"
+		icon_state = "hair_toriyama2"
+
+	cia
+		name = "CIA"
+		icon_state = "hair_cia"
+
+	mulder
+		name = "Mulder"
+		icon_state = "hair_mulder"
+
+	scully
+		name = "Scully"
+		icon_state = "hair_scully"
+
+	nitori
+		name = "Nitori"
+		icon_state = "hair_nitori"
+
+	joestar
+		name = "Joestar"
+		icon_state = "hair_joestar"
+
+	edgeworth
+		name = "Edgeworth"
+		icon_state = "hair_edgeworth"
+
+	objection
+		name = "Wright"
+		icon_state = "hair_objection!"
+
+	dubsman
+		name = "Dubsman"
+		icon_state = "hair_dubsman"
+
+	blackswordsman
+		name = "Black Swordsman"
+		icon_state = "hair_blackswordsman"
+
+	mentalist
+		name = "Mentalist"
+		icon_state = "hair_mentalist"
+
+	fujisaki
+		name = "Fujisaki"
+		icon_state = "hair_fujisaki"
+
+	schierke
+		name = "Schierke"
+		icon_state = "hair_schierke"
+
+	akari
+		name = "Akari"
+		icon_state = "hair_akari"
+
+	fujiyabashi
+		name = "Fujiyabashi"
+		icon_state = "hair_fujiyabashi"
+
+	nia
+		name = "Nia"
+		icon_state = "hair_nia"
+
+	shinobu
+		name = "Shinobu"
+		icon_state = "hair_shinobu"
+
+	ramona
+		name = "Ramona"
+		icon_state = "hair_ramona"
+
+	megaeyebrows
+		name = "Mega Eyebrows"
+		icon_state = "hair_megaeyebrow"
 
 /////////////////////////////
 // Facial Hair Definitions //
 /////////////////////////////
 /datum/sprite_accessory/facial_hair
 	icon = 'icons/mob/human_face.dmi'
-	gender = MALE // barf (unless you're a dorf, dorfs dig chix w/ beards :P)
 
-/datum/sprite_accessory/facial_hair/shaved
-	name = "Shaved"
-	icon_state = null
-	gender = NEUTER
+	shaved
+		name = "Shaved"
+		icon_state = null
+		gender = NEUTER
 
-/datum/sprite_accessory/facial_hair/watson
-	name = "Watson Mustache"
-	icon_state = "facial_watson"
+	watson
+		name = "Watson Mustache"
+		icon_state = "facial_watson"
 
-/datum/sprite_accessory/facial_hair/hogan
-	name = "Hulk Hogan Mustache"
-	icon_state = "facial_hogan" //-Neek
+	hogan
+		name = "Hulk Hogan Mustache"
+		icon_state = "facial_hogan" //-Neek
 
-/datum/sprite_accessory/facial_hair/vandyke
-	name = "Van Dyke Mustache"
-	icon_state = "facial_vandyke"
+	vandyke
+		name = "Van Dyke Mustache"
+		icon_state = "facial_vandyke"
 
-/datum/sprite_accessory/facial_hair/chaplin
-	name = "Square Mustache"
-	icon_state = "facial_chaplin"
+	chaplin
+		name = "Square Mustache"
+		icon_state = "facial_chaplin"
 
-/datum/sprite_accessory/facial_hair/selleck
-	name = "Selleck Mustache"
-	icon_state = "facial_selleck"
+	selleck
+		name = "Selleck Mustache"
+		icon_state = "facial_selleck"
 
-/datum/sprite_accessory/facial_hair/neckbeard
-	name = "Neckbeard"
-	icon_state = "facial_neckbeard"
+	neckbeard
+		name = "Neckbeard"
+		icon_state = "facial_neckbeard"
 
-/datum/sprite_accessory/facial_hair/fullbeard
-	name = "Full Beard"
-	icon_state = "facial_fullbeard"
+	fullbeard
+		name = "Full Beard"
+		icon_state = "facial_fullbeard"
 
-/datum/sprite_accessory/facial_hair/longbeard
-	name = "Long Beard"
-	icon_state = "facial_longbeard"
+	longbeard
+		name = "Long Beard"
+		icon_state = "facial_longbeard"
 
-/datum/sprite_accessory/facial_hair/vlongbeard
-	name = "Very Long Beard"
-	icon_state = "facial_wise"
+	vlongbeard
+		name = "Very Long Beard"
+		icon_state = "facial_wise"
 
-/datum/sprite_accessory/facial_hair/elvis
-	name = "Elvis Sideburns"
-	icon_state = "facial_elvis"
+	elvis
+		name = "Elvis Sideburns"
+		icon_state = "facial_elvis"
 
-/datum/sprite_accessory/facial_hair/abe
-	name = "Abraham Lincoln Beard"
-	icon_state = "facial_abe"
+	abe
+		name = "Abraham Lincoln Beard"
+		icon_state = "facial_abe"
 
-/datum/sprite_accessory/facial_hair/chinstrap
-	name = "Chinstrap"
-	icon_state = "facial_chin"
+	chinstrap
+		name = "Chinstrap"
+		icon_state = "facial_chin"
 
-/datum/sprite_accessory/facial_hair/hip
-	name = "Hipster Beard"
-	icon_state = "facial_hip"
+	hip
+		name = "Hipster Beard"
+		icon_state = "facial_hip"
 
-/datum/sprite_accessory/facial_hair/gt
-	name = "Goatee"
-	icon_state = "facial_gt"
+	gt
+		name = "Goatee"
+		icon_state = "facial_gt"
 
-/datum/sprite_accessory/facial_hair/jensen
-	name = "Jensen Beard"
-	icon_state = "facial_jensen"
+	jensen
+		name = "Adam Jensen Beard"
+		icon_state = "facial_jensen"
 
-/datum/sprite_accessory/facial_hair/dwarf
-	name = "Dwarf Beard"
-	icon_state = "facial_dwarf"
+	dwarf
+		name = "Dwarf Beard"
+		icon_state = "facial_dwarf"
 
-/datum/sprite_accessory/facial_hair/fiveoclock
-	name = "Five o Clock Shadow"
-	icon_state = "facial_fiveoclock"
+	fiveoclock
+		name = "Five o Clock Shadow"
+		icon_state = "facial_fiveoclock"
 
-/datum/sprite_accessory/facial_hair/fu
-	name = "Fu Manchu"
-	icon_state = "facial_fumanchu"
+	fu
+		name = "Fu Manchu"
+		icon_state = "facial_fumanchu"
 
 ///////////////////////////
 // Underwear Definitions //
@@ -566,536 +545,396 @@
 /datum/sprite_accessory/underwear
 	icon = 'icons/mob/underwear.dmi'
 
-/datum/sprite_accessory/underwear/nude
-	name = "Nude"
-	icon_state = null
-	gender = NEUTER
+	nude
+		name = "Nude"
+		icon_state = null
+		gender = NEUTER
 
-/datum/sprite_accessory/underwear/male_white
-	name = "Mens White"
-	icon_state = "male_white"
-	gender = MALE
+	male_white
+		name = "Mens White"
+		icon_state = "male_white"
+		gender = MALE
 
-/datum/sprite_accessory/underwear/male_grey
-	name = "Mens Grey"
-	icon_state = "male_grey"
-	gender = MALE
+	male_grey
+		name = "Mens Grey"
+		icon_state = "male_grey"
+		gender = MALE
 
-/datum/sprite_accessory/underwear/male_green
-	name = "Mens Green"
-	icon_state = "male_green"
-	gender = MALE
+	male_green
+		name = "Mens Green"
+		icon_state = "male_green"
+		gender = MALE
 
-/datum/sprite_accessory/underwear/male_blue
-	name = "Mens Blue"
-	icon_state = "male_blue"
-	gender = MALE
+	male_blue
+		name = "Mens Blue"
+		icon_state = "male_blue"
+		gender = MALE
 
-/datum/sprite_accessory/underwear/male_black
-	name = "Mens Black"
-	icon_state = "male_black"
-	gender = MALE
+	male_black
+		name = "Mens Black"
+		icon_state = "male_black"
+		gender = MALE
 
-/datum/sprite_accessory/underwear/male_mankini
-	name = "Mankini"
-	icon_state = "male_mankini"
-	gender = MALE
+	male_mankini
+		name = "Mankini"
+		icon_state = "male_mankini"
+		gender = MALE
 
-/datum/sprite_accessory/underwear/male_hearts
-	name = "Mens Hearts Boxer"
-	icon_state = "male_hearts"
-	gender = MALE
+	male_hearts
+		name = "Mens Hearts Boxer"
+		icon_state = "male_hearts"
+		gender = MALE
 
-/datum/sprite_accessory/underwear/male_blackalt
-	name = "Mens Black Boxer"
-	icon_state = "male_blackalt"
-	gender = MALE
+	male_blackalt
+		name = "Mens Black Boxer"
+		icon_state = "male_blackalt"
+		gender = MALE
 
-/datum/sprite_accessory/underwear/male_greyalt
-	name = "Mens Grey Boxer"
-	icon_state = "male_greyalt"
-	gender = MALE
+	male_greyalt
+		name = "Mens Grey Boxer"
+		icon_state = "male_greyalt"
+		gender = MALE
 
-/datum/sprite_accessory/underwear/male_stripe
-	name = "Mens Striped Boxer"
-	icon_state = "male_stripe"
-	gender = MALE
+	male_stripe
+		name = "Mens Striped Boxer"
+		icon_state = "male_stripe"
+		gender = MALE
 
-/datum/sprite_accessory/underwear/male_commie
-	name = "Mens Striped Commie Boxer"
-	icon_state = "male_commie"
-	gender = MALE
+	male_kinky
+		name = "Mens Kinky"
+		icon_state = "male_kinky"
+		gender = MALE
 
-/datum/sprite_accessory/underwear/male_uk
-	name = "Mens Striped UK Boxer"
-	icon_state = "male_uk"
-	gender = MALE
+	male_red
+		name = "Mens Red"
+		icon_state = "male_red"
+		gender = MALE
 
-/datum/sprite_accessory/underwear/male_usastripe
-	name = "Mens Striped Freedom Boxer"
-	icon_state = "male_assblastusa"
-	gender = MALE
+	female_red
+		name = "Ladies Red"
+		icon_state = "female_red"
+		gender = FEMALE
 
-/datum/sprite_accessory/underwear/male_kinky
-	name = "Mens Kinky"
-	icon_state = "male_kinky"
-	gender = MALE
+	female_white
+		name = "Ladies White"
+		icon_state = "female_white"
+		gender = FEMALE
 
-/datum/sprite_accessory/underwear/male_red
-	name = "Mens Red"
-	icon_state = "male_red"
-	gender = MALE
+	female_yellow
+		name = "Ladies Yellow"
+		icon_state = "female_yellow"
+		gender = FEMALE
 
-/datum/sprite_accessory/underwear/female_red
-	name = "Ladies Red"
-	icon_state = "female_red"
-	gender = FEMALE
+	female_blue
+		name = "Ladies Blue"
+		icon_state = "female_blue"
+		gender = FEMALE
 
-/datum/sprite_accessory/underwear/female_white
-	name = "Ladies White"
-	icon_state = "female_white"
-	gender = FEMALE
+	female_black
+		name = "Ladies Black"
+		icon_state = "female_black"
+		gender = FEMALE
 
-/datum/sprite_accessory/underwear/female_yellow
-	name = "Ladies Yellow"
-	icon_state = "female_yellow"
-	gender = FEMALE
+	female_thong
+		name = "Ladies Thong"
+		icon_state = "female_thong"
+		gender = FEMALE
 
-/datum/sprite_accessory/underwear/female_blue
-	name = "Ladies Blue"
-	icon_state = "female_blue"
-	gender = FEMALE
+	female_babydoll
+		name = "Babydoll"
+		icon_state = "female_babydoll"
+		gender = FEMALE
 
-/datum/sprite_accessory/underwear/female_black
-	name = "Ladies Black"
-	icon_state = "female_black"
-	gender = FEMALE
+	female_babyblue
+		name = "Ladies Baby-Blue"
+		icon_state = "female_babyblue"
+		gender = FEMALE
 
-/datum/sprite_accessory/underwear/female_thong
-	name = "Ladies Thong"
-	icon_state = "female_thong"
-	gender = FEMALE
+	female_green
+		name = "Ladies Green"
+		icon_state = "female_green"
+		gender = FEMALE
 
-/datum/sprite_accessory/underwear/female_babydoll
-	name = "Babydoll"
-	icon_state = "female_babydoll"
-	gender = FEMALE
+	female_pink
+		name = "Ladies Pink"
+		icon_state = "female_pink"
+		gender = FEMALE
 
-/datum/sprite_accessory/underwear/female_babyblue
-	name = "Ladies Baby-Blue"
-	icon_state = "female_babyblue"
-	gender = FEMALE
+	female_kinky
+		name = "Ladies Kinky"
+		icon_state = "female_kinky"
+		gender = FEMALE
 
-/datum/sprite_accessory/underwear/female_green
-	name = "Ladies Green"
-	icon_state = "female_green"
-	gender = FEMALE
-
-/datum/sprite_accessory/underwear/female_pink
-	name = "Ladies Pink"
-	icon_state = "female_pink"
-	gender = FEMALE
-
-/datum/sprite_accessory/underwear/female_kinky
-	name = "Ladies Kinky"
-	icon_state = "female_kinky"
-	gender = FEMALE
-
-/datum/sprite_accessory/underwear/female_whitealt
-	name = "Ladies White Sport"
-	icon_state = "female_whitealt"
-	gender = FEMALE
-
-/datum/sprite_accessory/underwear/female_blackalt
-	name = "Ladies Black Sport"
-	icon_state = "female_blackalt"
-	gender = FEMALE
+	female_tankini
+		name = "Tankini"
+		icon_state = "female_tankini"
+		gender = FEMALE
 
 ////////////////////////////
 // Undershirt Definitions //
 ////////////////////////////
+
 /datum/sprite_accessory/undershirt
-	icon = 'icons/mob/underwear.dmi'
+	icon = 'icons/mob/undershirt.dmi'
 
-/datum/sprite_accessory/undershirt/nude
-	name = "Nude"
-	icon_state = null
-	gender = NEUTER
+	nude
+		name = "Nude"
+		icon_state = null
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/shirt_white
-	name = "White Shirt"
-	icon_state = "shirt_white"
-	gender = NEUTER
+	black_shirt
+		name = "Black Shirt"
+		icon_state = "bl_shirt"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/shirt_black
-	name = "Black Shirt"
-	icon_state = "shirt_black"
-	gender = NEUTER
+	black_shirt2
+		name = "Black Shirt 2"
+		icon_state = "bl_shirt2"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/shirt_grey
-	name = "Grey Shirt"
-	icon_state = "shirt_grey"
-	gender = NEUTER
+	white_shirt
+		name = "White Shirt"
+		icon_state = "wt_shirt"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/tank_white
-	name = "White Tank Top"
-	icon_state = "tank_white"
-	gender = NEUTER
+	white_shirt2
+		name = "White Shirt 2"
+		icon_state = "wt_shirt2"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/tank_black
-	name = "Black Tank Top"
-	icon_state = "tank_black"
-	gender = NEUTER
+	black_tank_top
+		name = "Black Tank Top"
+		icon_state = "bl_ttop"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/tank_grey
-	name = "Grey Tank Top"
-	icon_state = "tank_grey"
-	gender = NEUTER
+	white_tank_top
+		name = "White Tank Top"
+		icon_state = "wt_ttop"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/female_midriff
-	name = "Midriff Tank Top"
-	icon_state = "tank_midriff"
-	gender = FEMALE
+	atmos_tank
+		name = "Atmos Tank Top"
+		icon_state = "atmostank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/lover
-	name = "Lover shirt"
-	icon_state = "lover"
-	gender = NEUTER
+	botany_tank
+		name = "Botany Tank Top"
+		icon_state = "botanytank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/ian
-	name = "Blue Ian Shirt"
-	icon_state = "ian"
-	gender = NEUTER
+	engi_tank
+		name = "Engineering Tank Top"
+		icon_state = "engitank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/uk
-	name = "UK Shirt"
-	icon_state = "uk"
-	gender = NEUTER
+	sci_tank
+		name = "Science Tank Top"
+		icon_state = "scitank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/usa
-	name = "USA Shirt"
-	icon_state = "shirt_assblastusa"
-	gender = NEUTER
+	mine_tank
+		name = "Mining Tank Top"
+		icon_state = "minetank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/ilovent
-	name = "I Love NT Shirt"
-	icon_state = "ilovent"
-	gender = NEUTER
+	jani_tank
+		name = "Janitorial Tank Top"
+		icon_state = "janitank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/peace
-	name = "Peace Shirt"
-	icon_state = "peace"
-	gender = NEUTER
+	med_tank
+		name = "Medical Tank Top"
+		icon_state = "medtank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/mondmondjaja
-	name = "Band Shirt"
-	icon_state = "band"
-	gender = NEUTER
+	robo_tank
+		name = "Robotics Tank Top"
+		icon_state = "robotank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/pacman
-	name = "Pogoman Shirt"
-	icon_state = "pogoman"
-	gender = NEUTER
+	sec_tank
+		name = "Security Tank Top"
+		icon_state = "sectank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/matroska
-	name = "Matroska Shirt"
-	icon_state = "matroska"
-	gender = NEUTER
+	rainbow_tank
+		name = "Rainbow Tank Top"
+		icon_state = "rainbowtank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/whiteshortsleeve
-	name = "White Short-sleeved Shirt"
-	icon_state = "whiteshortsleeve"
-	gender = NEUTER
+	happy_tank
+		name = "Happy Tank Top"
+		icon_state = "happytank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/purpleshortsleeve
-	name = "Purple Short-sleeved Shirt"
-	icon_state = "purpleshortsleeve"
-	gender = NEUTER
+	neutral_tank
+		name = "Neutral Tank Top"
+		icon_state = "neutraltank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/blueshortsleeve
-	name = "Blue Short-sleeved Shirt"
-	icon_state = "blueshortsleeve"
-	gender = NEUTER
+	sad_tank
+		name = "Sad Tank Top"
+		icon_state = "sadtank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/greenshortsleeve
-	name = "Green Short-sleeved Shirt"
-	icon_state = "greenshortsleeve"
-	gender = NEUTER
+	assistant_tank
+		name = "Assistant Tank Top"
+		icon_state = "assistanttank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/blackshortsleeve
-	name = "Black Short-sleeved Shirt"
-	icon_state = "blackshortsleeve"
-	gender = NEUTER
+	dorf_tank
+		name = "Dwarf Tank Top"
+		icon_state = "dorftank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/blueshirt
-	name = "Blue T-Shirt"
-	icon_state = "blueshirt"
-	gender = NEUTER
+	monkey_tank
+		name = "Monkey Tank Top"
+		icon_state = "monkeytank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/redshirt
-	name = "Red T-Shirt"
-	icon_state = "redshirt"
-	gender = NEUTER
+	praise_the_sun_tank
+		name = "Praise The Sun Tank Top" //Looks a tad shit all capitalised
+		icon_state = "praisethesuntank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/yellowshirt
-	name = "Yellow T-Shirt"
-	icon_state = "yellowshirt"
-	gender = NEUTER
+	treehugger_tank
+		name = "Treehugger Tank Top"
+		icon_state = "treehuggertank"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/greenshirt
-	name = "Green T-Shirt"
-	icon_state = "greenshirt"
-	gender = NEUTER
+	skull_tank
+		name = "Skull Tank Top"
+		icon_state = "skull_ttop"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/bluepolo
-	name = "Blue Polo Shirt"
-	icon_state = "bluepolo"
-	gender = NEUTER
+	rus_shirt
+		name = "Telnyashka Shirt"
+		icon_state = "rus_shirt"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/redpolo
-	name = "Red Polo Shirt"
-	icon_state = "redpolo"
-	gender = NEUTER
+	rus_tank
+		name = "Telnyashka Tank Top"
+		icon_state = "rus_ttop"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/whitepolo
-	name = "White Polo Shirt"
-	icon_state = "whitepolo"
-	gender = NEUTER
+	ss13_shirt
+		name = "Space Station 13 Shirt"
+		icon_state = "ss13shirt"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/grayyellowpolo
-	name = "Gray-Yellow Polo Shirt"
-	icon_state = "grayyellowpolo"
-	gender = NEUTER
+	bleed_shirt
+		name = "Wound Shirt"
+		icon_state = "bleedshirt"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/redtop
-	name = "Red Top"
-	icon_state = "redtop"
-	gender = FEMALE
+	ian_shirt
+		name = "Corgi Shirt"
+		icon_state = "ianshirt"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/whitetop
-	name = "White Top"
-	icon_state = "whitetop"
-	gender = FEMALE
+	wat_shirt
+		name = "Question Shirt"
+		icon_state = "watshirt"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/greenshirtsport
-	name = "Green Sports Shirt"
-	icon_state = "greenshirtsport"
-	gender = NEUTER
+	skull_shirt
+		name = "Skull Shirt"
+		icon_state = "skullshirt"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/redshirtsport
-	name = "Red Sports Shirt"
-	icon_state = "redshirtsport"
-	gender = NEUTER
+	commie_shirt
+		name = "Question Shirt"
+		icon_state = "watshirt"
+		gender = NEUTER
 
-/datum/sprite_accessory/undershirt/blueshirtsport
-	name = "Blue Sports Shirt"
-	icon_state = "blueshirtsport"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/ss13
-	name = "SS13 Shirt"
-	icon_state = "shirt_ss13"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/tankfire
-	name = "Fire Tank Top"
-	icon_state = "tank_fire"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/question
-	name = "Question Shirt"
-	icon_state = "shirt_question"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/skull
-	name = "Skull Shirt"
-	icon_state = "shirt_skull"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/commie
-	name = "Commie Shirt"
-	icon_state = "shirt_commie"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/nano
-	name = "Nanotransen Shirt"
-	icon_state = "shirt_nano"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/stripe
-	name = "Striped Shirt"
-	icon_state = "shirt_stripes"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/blueshirt
-	name = "Blue Shirt"
-	icon_state = "shirt_blue"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/redshirt
-	name = "Red Shirt"
-	icon_state = "shirt_red"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/tank_red
-	name = "Red Tank Top"
-	icon_state = "tank_red"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/greenshirt
-	name = "Green Shirt"
-	icon_state = "shirt_green"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/meat
-	name = "Meat Shirt"
-	icon_state = "shirt_meat"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/tiedye
-	name = "Tie-dye Shirt"
-	icon_state = "shirt_tiedye"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/redjersey
-	name = "Red Jersey"
-	icon_state = "shirt_redjersey"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/bluejersey
-	name = "Blue Jersey"
-	icon_state = "shirt_bluejersey"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/tankstripe
-	name = "Striped Tank Top"
-	icon_state = "tank_stripes"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/clownshirt
-	name = "Clown Shirt"
-	icon_state = "shirt_clown"
-	gender = NEUTER
-
-/datum/sprite_accessory/undershirt/alienshirt
-	name = "Alien Shirt"
-	icon_state = "shirt_alien"
-	gender = NEUTER
-
-
+	nano_shirt
+		name = "Nanotrasen Shirt"
+		icon_state = "skullshirt"
+		gender = NEUTER
 
 ///////////////////////
 // Socks Definitions //
 ///////////////////////
+
 /datum/sprite_accessory/socks
-	icon = 'icons/mob/underwear.dmi'
+	icon = 'icons/mob/socks.dmi'
 
-/datum/sprite_accessory/socks/nude
-	name = "Nude"
-	icon_state = null
-	gender = NEUTER
+	none
+		name = "None"
+		icon_state = null
+		gender = NEUTER
 
-/datum/sprite_accessory/socks/white_norm
-	name = "Normal White"
-	icon_state = "white_norm"
-	gender = NEUTER
+	white_norm
+		name = "Normal White"
+		icon_state = "white_norm"
+		gender = NEUTER
 
-/datum/sprite_accessory/socks/black_norm
-	name = "Normal Black"
-	icon_state = "black_norm"
-	gender = NEUTER
+	black_norm
+		name = "Normal Black"
+		icon_state = "black_norm"
+		gender = NEUTER
 
-/datum/sprite_accessory/socks/white_short
-	name = "Short White"
-	icon_state = "white_short"
-	gender = NEUTER
+	white_short
+		name = "Short White"
+		icon_state = "white_short"
+		gender = NEUTER
 
-/datum/sprite_accessory/socks/black_short
-	name = "Short Black"
-	icon_state = "black_short"
-	gender = NEUTER
+	black_short
+		name = "Short Black"
+		icon_state = "black_short"
+		gender = NEUTER
 
-/datum/sprite_accessory/socks/white_knee
-	name = "Knee-high White"
-	icon_state = "white_knee"
-	gender = NEUTER
+	white_knee
+		name = "Knee-high White"
+		icon_state = "white_knee"
+		gender = NEUTER
 
-/datum/sprite_accessory/socks/black_knee
-	name = "Knee-high Black"
-	icon_state = "black_knee"
-	gender = NEUTER
+	black_knee
+		name = "Knee-high Black"
+		icon_state = "black_knee"
+		gender = NEUTER
 
-/datum/sprite_accessory/socks/thin_knee
-	name = "Knee-high Thin"
-	icon_state = "thin_knee"
-	gender = FEMALE
+	thin_knee
+		name = "Knee-high Thin"
+		icon_state = "thin_knee"
+		gender = FEMALE
 
-/datum/sprite_accessory/socks/striped_knee
-	name = "Knee-high Striped"
-	icon_state = "striped_knee"
-	gender = NEUTER
+	striped_knee
+		name = "Knee-high Striped"
+		icon_state = "striped_knee"
+		gender = NEUTER
 
-/datum/sprite_accessory/socks/rainbow_knee
-	name = "Knee-high Rainbow"
-	icon_state = "rainbow_knee"
-	gender = NEUTER
+	rainbow_knee
+		name = "Knee-high Rainbow"
+		icon_state = "rainbow_knee"
+		gender = NEUTER
 
-/datum/sprite_accessory/socks/white_thigh
-	name = "Thigh-high White"
-	icon_state = "white_thigh"
-	gender = NEUTER
+	white_thigh
+		name = "Thigh-high White"
+		icon_state = "white_thigh"
+		gender = NEUTER
 
-/datum/sprite_accessory/socks/black_thigh
-	name = "Thigh-high Black"
-	icon_state = "black_thigh"
-	gender = NEUTER
+	black_thigh
+		name = "Thigh-high Black"
+		icon_state = "black_thigh"
+		gender = NEUTER
 
-/datum/sprite_accessory/socks/thin_thigh
-	name = "Thigh-high Thin"
-	icon_state = "thin_thigh"
-	gender = FEMALE
+	thin_thigh
+		name = "Thigh-high Thin"
+		icon_state = "thin_thigh"
+		gender = FEMALE
 
-/datum/sprite_accessory/socks/striped_thigh
-	name = "Thigh-high Striped"
-	icon_state = "striped_thigh"
-	gender = NEUTER
+	striped_thigh
+		name = "Thigh-high Striped"
+		icon_state = "striped_thigh"
+		gender = NEUTER
 
-/datum/sprite_accessory/socks/rainbow_thigh
-	name = "Thigh-high Rainbow"
-	icon_state = "rainbow_thigh"
-	gender = NEUTER
+	rainbow_thigh
+		name = "Thigh-high Rainbow"
+		icon_state = "rainbow_thigh"
+		gender = NEUTER
 
-/datum/sprite_accessory/socks/usa_knee
-	name = "Knee-High Freedom Stripes"
-	icon_state = "assblastusa_knee"
-	gender = NEUTER
-
-/datum/sprite_accessory/socks/usa_thigh
-	name = "Thigh-high Freedom Stripes"
-	icon_state = "assblastusa_thigh"
-	gender = NEUTER
-
-/datum/sprite_accessory/socks/uk_knee
-	name = "Knee-High UK Stripes"
-	icon_state = "uk_knee"
-	gender = NEUTER
-
-/datum/sprite_accessory/socks/uk_thigh
-	name = "Thigh-high UK Stripes"
-	icon_state = "uk_thigh"
-	gender = NEUTER
-
-/datum/sprite_accessory/socks/commie_knee
-	name = "Knee-High Commie Stripes"
-	icon_state = "commie_knee"
-	gender = NEUTER
-
-/datum/sprite_accessory/socks/commie_thigh
-	name = "Thigh-high Commie Stripes"
-	icon_state = "commie_thigh"
-	gender = NEUTER
-
-/datum/sprite_accessory/socks/pantyhose
-	name = "Pantyhose"
-	icon_state = "pantyhose"
-	gender = FEMALE
+	pantyhose
+		name = "Pantyhose"
+		icon_state = "pantyhose"
+		gender = FEMALE
