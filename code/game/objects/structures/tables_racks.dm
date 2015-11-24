@@ -557,7 +557,7 @@
 			if(!G.confirm())
 				return
 			G.affecting.loc = src.loc
-			G.affecting.Weaken(5)
+			G.affecting.Weaken(1.4) // Enough to cuff someone with handcuffs, not with cable restraints or other greyshit stuff and not game-breaking as 5 BYOND seconds
 			G.affecting.visible_message("<span class='danger'>[G.assailant] pushes [G.affecting] onto [src].</span>", \
 										"<span class='userdanger'>[G.assailant] pushes [G.affecting] onto [src].</span>")
 		qdel(I)

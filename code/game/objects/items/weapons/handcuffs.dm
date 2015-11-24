@@ -1,18 +1,19 @@
 /obj/item/weapon/handcuffs
-	name = "handcuffs"
-	desc = "Use this to keep prisoners in line."
-	gender = PLURAL
-	icon = 'icons/obj/items.dmi'
-	icon_state = "handcuff"
-	flags = CONDUCT
-	slot_flags = SLOT_BELT
-	throwforce = 0
-	w_class = 2.0
-	throw_speed = 3
-	throw_range = 5
-	m_amt = 500
-	origin_tech = "materials=1"
-	var/breakouttime = 600 //Deciseconds = 120s = 2 minutes
+	name             = "handcuffs"
+	desc             = "Use this to keep prisoners in line."
+	gender           = PLURAL
+	icon             = 'icons/obj/items.dmi'
+	icon_state       = "handcuff"
+	flags            = CONDUCT
+	slot_flags       = SLOT_BELT
+	throwforce       = 0
+	w_class          = 2.0
+	throw_speed      = 3
+	throw_range      = 5
+	m_amt            = 500
+	origin_tech      = "materials=1"
+	var/breakouttime = 600 									 //Deciseconds = 60s = 1m
+	var/cufftime     = 30  									 //Deciseconds = 3s
 
 
 /obj/item/weapon/handcuffs/attack(mob/living/carbon/C, mob/user)
@@ -40,7 +41,7 @@
 
 		var/turf/user_loc = user.loc
 		var/turf/C_loc = C.loc
-		if(do_after(user, 30))
+		if(do_after(user, cufftime))
 			if(!C || C.handcuffed)
 				return
 			if(user_loc == user.loc && C_loc == C.loc)
@@ -56,11 +57,12 @@
 			add_logs(user, C, "handcuffed")
 
 /obj/item/weapon/handcuffs/cable
-	name = "cable restraints"
-	desc = "Looks like some cables tied together. Could be used to tie something up."
-	icon_state = "cuff_red"
-	item_state = "coil_red"
-	breakouttime = 300 //Deciseconds = 30s
+	name         = "cable restraints"
+	desc         = "Looks like some cables tied together. Could be used to tie something up."
+	icon_state   = "cuff_red"
+	item_state   = "coil_red"
+	breakouttime = 300 																		 //Deciseconds = 30s
+	cufftime	 = 60																		 //Greyshit get fucked
 
 /obj/item/weapon/handcuffs/cable/red
 	icon_state = "cuff_red"
@@ -102,11 +104,12 @@
 		qdel(src)
 
 /obj/item/weapon/handcuffs/cyborg
-	name = "zipties"
-	desc = "Plastic zipties designed to be disposable and convenient."
-	icon_state = "cuff_white"
-	item_state = "coil_white"
-	breakouttime = 300 //Deciseconds = 30s
+	name         = "zipties"
+	desc         = "Plastic zipties designed to be disposable and convenient."
+	icon_state   = "cuff_white"
+	item_state   = "coil_white"
+	breakouttime = 300 														  //Deciseconds = 30s
+	cufftime     = 15														  //God bless Beepsky
 
 /obj/item/weapon/handcuffs/cyborg/attack(mob/living/carbon/C, mob/user)
 	if(isrobot(user))
@@ -114,7 +117,7 @@
 			playsound(loc, 'sound/weapons/cablecuff.ogg', 30, 1, -2)
 			C.visible_message("<span class='danger'>[user] is trying to restrain [C] with zipties!</span>", \
 								"<span class='userdanger'>[user] is trying to restrain [C] with zipties!</span>")
-			if(do_mob(user, C, 30))
+			if(do_mob(user, C, cufftime))
 				if(C.handcuffed)
 					return
 				C.handcuffed = new /obj/item/weapon/handcuffs/cyborg(C)
@@ -122,7 +125,7 @@
 		else
 			C.visible_message("<span class='danger'>[user] tries to cut [C]'s zipties.</span>", \
 							"<span class='notice'>[user] tries to cut [C]'s zipties.</span>")
-			if(do_mob(user, C, 30))
+			if(do_mob(user, C, cufftime))
 				if(!C.handcuffed)
 					return
 				C.unEquip(C.handcuffed)
