@@ -101,6 +101,7 @@
 
 /obj/structure/alien/resin/attack_hand(mob/user)
 	if(user.has_organic_effect(/datum/organic_effect/hulk))
+		user.do_attack_animation(src)
 		user.visible_message("<span class='danger'>[user] destroys [src]!</span>")
 		health = 0
 		healthcheck()
@@ -113,6 +114,7 @@
 /obj/structure/alien/resin/attack_alien(mob/user)
 	if(islarva(user))
 		return
+	user.do_attack_animation(src)
 	user.visible_message("<span class='danger'>[user] claws at the resin!</span>")
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	health -= 50

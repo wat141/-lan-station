@@ -155,6 +155,7 @@
 
 /obj/machinery/door/window/attack_paw(mob/user as mob)
 	if(istype(user, /mob/living/carbon/alien/humanoid) || istype(user, /mob/living/carbon/slime/))
+		user.do_attack_animation(src)
 		if(src.operating)
 			return
 		user.changeNext_move(8)

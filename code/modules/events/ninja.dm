@@ -2757,6 +2757,7 @@ It is possible to destroy the net by the occupant or someone else.
 
 	attack_hand()
 		if (usr.has_organic_effect(/datum/organic_effect/hulk))
+			usr.do_attack_animation(src)
 			usr << text("\blue You easily destroy the energy net.")
 			for(var/mob/O in oviewers(src))
 				O.show_message(text("\red [] rips the energy net apart!", usr), 1)
@@ -2770,6 +2771,7 @@ It is possible to destroy the net by the occupant or someone else.
 	attack_alien()
 		if (islarva(usr))
 			return
+		usr.do_attack_animation(src)
 		usr << text("\green You claw at the net.")
 		for(var/mob/O in oviewers(src))
 			O.show_message(text("\red [] claws at the energy net!", usr), 1)

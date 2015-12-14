@@ -99,6 +99,7 @@
 	if(!can_be_reached(user))
 		return
 	if(user.has_organic_effect(/datum/organic_effect/hulk))
+		user.do_attack_animation(src)
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
 		user.visible_message("<span class='danger'>[user] smashes through [src]!</span>")
 		var/obj/item/weapon/shard/S = new (loc)
@@ -121,6 +122,7 @@
 /obj/structure/window/proc/attack_generic(mob/user as mob, damage = 0)	//used by attack_alien, attack_animal, and attack_slime
 	if(!can_be_reached(user))
 		return
+	user.do_attack_animation(src)
 	user.changeNext_move(8)
 	health -= damage
 	if(health <= 0)

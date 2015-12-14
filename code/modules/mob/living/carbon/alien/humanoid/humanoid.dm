@@ -3,6 +3,8 @@
 	icon_state = "alien_s"
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
+	var/custom_pixel_x_offset = 0 //for admin fuckery.
+	var/custom_pixel_y_offset = 0
 	var/caste = ""
 	update_icon = 1
 
@@ -120,6 +122,7 @@
 			if (istype(wear_mask, /obj/item/clothing/mask/muzzle))
 				return
 			if (health > 0)
+				M.do_attack_animation(src)
 				playsound(loc, 'sound/weapons/bite.ogg', 50, 1, -1)
 				for(var/mob/O in viewers(src, null))
 					if ((O.client && !( O.blinded )))
@@ -137,7 +140,7 @@
 	if(M.Victim) return // can't attack while eating!
 
 	if (health > -100)
-
+		M.do_attack_animation(src)
 		for(var/mob/O in viewers(src, null))
 			if ((O.client && !( O.blinded )))
 				O.show_message(text("\red <B>The [M.name] glomps []!</B>", src), 1)
@@ -235,6 +238,7 @@
 					O.show_message(text("\red [] has grabbed [] passively!", M, src), 1)
 
 		if ("harm")
+			M.do_attack_animation(src)
 			var/damage = rand(1, 9)
 			if (prob(90))
 				if (M.has_organic_effect(/datum/organic_effect/hulk))//HULK SMASH
@@ -313,6 +317,7 @@ In all, this is a lot like the monkey code. /N
 
 		else
 			if (health > 0)
+				M.do_attack_animation(src)
 				playsound(loc, 'sound/weapons/bite.ogg', 50, 1, -1)
 				var/damage = rand(1, 3)
 				for(var/mob/O in viewers(src, null))
@@ -368,3 +373,15 @@ In all, this is a lot like the monkey code. /N
 			if(do_mob(usr, src, STRIP_DELAY * 0.5))
 				unEquip(r_store)
 				unEquip(l_store)
+
+/mob/living/carbon/alien/humanoid/get_standard_pixel_y_offset(lying = 0)
+	if(custom_pixel_y_offset)
+		return custom_pixel_y_offset
+	else
+		return initial(pixel_y)
+
+/mob/living/carbon/alien/humanoid/get_standard_pixel_x_offset(lying = 0)
+	if(custom_pixel_x_offset)
+		return custom_pixel_x_offset
+	else
+		return initial(pixel_x)

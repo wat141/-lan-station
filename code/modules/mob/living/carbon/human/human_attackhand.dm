@@ -62,6 +62,7 @@
 			return 1
 
 		if("harm")
+			M.do_attack_animation(src)
 			add_logs(M, src, "punched")
 
 			var/attack_verb = "punch"
@@ -111,6 +112,7 @@
 				forcesay(hit_appends)
 
 		if("disarm")
+			M.do_attack_animation(src)
 			add_logs(M, src, "disarmed")
 
 			if(w_uniform)

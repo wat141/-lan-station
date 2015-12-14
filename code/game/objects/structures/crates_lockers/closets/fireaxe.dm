@@ -180,6 +180,7 @@
 		update_icon()
 
 	attack_paw(mob/user as mob)
+		user.do_attack_animation(src)
 		attack_hand(user)
 		return
 

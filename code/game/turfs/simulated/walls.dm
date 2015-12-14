@@ -97,6 +97,7 @@
 
 /turf/simulated/wall/attack_paw(mob/user as mob)
 	user.changeNext_move(8)
+	user.do_attack_animation(src)
 	if (user.has_organic_effect(/datum/organic_effect/hulk))
 		if (prob(hardness))
 			playsound(src, 'sound/effects/meteorimpact.ogg', 100, 1)
@@ -113,6 +114,7 @@
 
 /turf/simulated/wall/attack_animal(var/mob/living/simple_animal/M)
 	M.changeNext_move(8)
+	M.do_attack_animation(src)
 	if(M.environment_smash >= 2)
 		if(istype(src, /turf/simulated/wall/r_wall))
 			if(M.environment_smash == 3)

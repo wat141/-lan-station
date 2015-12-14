@@ -116,6 +116,7 @@
 	if(!istype(user))
 		return
 	status = 0
+	user.do_attack_animation(src)
 	visible_message("<span class='warning'>\The [user] slashes at [src]!</span>")
 	playsound(src.loc, 'sound/weapons/slash.ogg', 100, 1)
 	icon_state = "[initial(icon_state)]1"

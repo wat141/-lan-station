@@ -621,3 +621,37 @@
 				src.unEquip(what)
 				who.equip_to_slot_if_possible(what, where, 0, 1)
 
+// Attack animations
+
+/atom/movable/proc/do_attack_animation(atom/A, end_pixel_y)
+	var/pixel_x_diff = 0
+	var/pixel_y_diff = 0
+	var/final_pixel_y = initial(pixel_y)
+	if(end_pixel_y)
+		final_pixel_y = end_pixel_y
+
+	var/direction = get_dir(src, A)
+	if(direction & NORTH)
+		pixel_y_diff = 8
+	else if(direction & SOUTH)
+		pixel_y_diff = -8
+
+	if(direction & EAST)
+		pixel_x_diff = 8
+	else if(direction & WEST)
+		pixel_x_diff = -8
+
+	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2)
+	animate(pixel_x = initial(pixel_x), pixel_y = final_pixel_y, time = 2)
+
+/mob/living/do_attack_animation(atom/A)
+	var/final_pixel_y = get_standard_pixel_y_offset(lying)
+	..(A, final_pixel_y)
+	floating = 0
+//
+/mob/living/proc/get_standard_pixel_x_offset(lying = 0)
+	return initial(pixel_x)
+
+/mob/living/proc/get_standard_pixel_y_offset(lying = 0)
+	return initial(pixel_y)
+

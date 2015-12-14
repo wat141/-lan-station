@@ -53,6 +53,7 @@
 	return
 
 /obj/machinery/bot/attack_alien(var/mob/living/carbon/alien/user as mob)
+	user.do_attack_animation(src)
 	src.health -= rand(15,30)*brute_dam_coeff
 	src.visible_message("\red <B>[user] has slashed [src]!</B>")
 	playsound(src.loc, 'sound/weapons/slice.ogg', 25, 1, -1)
@@ -63,6 +64,7 @@
 
 /obj/machinery/bot/attack_animal(var/mob/living/simple_animal/M as mob)
 	if(M.melee_damage_upper == 0)	return
+	M.do_attack_animation(src)
 	src.health -= M.melee_damage_upper
 	src.visible_message("\red <B>[M] has [M.attacktext] [src]!</B>")
 	add_logs(M, src, "attacked", admin=0)

@@ -26,6 +26,7 @@
 	attack_hand(user)
 
 /obj/structure/grille/attack_hand(mob/user as mob)
+	user.do_attack_animation(src)
 	user.changeNext_move(8)
 	playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)
 	user.visible_message("<span class='warning'>[user] kicks [src].</span>", \
@@ -41,6 +42,7 @@
 	healthcheck()
 
 /obj/structure/grille/attack_alien(mob/user as mob)
+	user.do_attack_animation(src)
 	if(istype(user, /mob/living/carbon/alien/larva))	return
 	user.changeNext_move(8)
 	playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)
@@ -54,6 +56,7 @@
 		return
 
 /obj/structure/grille/attack_slime(mob/living/carbon/slime/user as mob)
+	user.do_attack_animation(src)
 	user.changeNext_move(8)
 	if(!user.is_adult)	return
 

@@ -619,6 +619,7 @@
 					O.show_message(text("\red [] has grabbed [] passively!", M, src), 1)
 
 		if ("harm")
+			M.do_attack_animation(src)
 			var/damage = rand(10, 20)
 			if (prob(90))
 				/*
@@ -643,6 +644,7 @@
 						O.show_message(text("\red <B>[] took a swipe at []!</B>", M, src), 1)
 
 		if ("disarm")
+			M.do_attack_animation(src)
 			if(!(lying))
 				if (rand(1,100) <= 85)
 					Stun(7)
@@ -723,6 +725,7 @@
 	if(M.melee_damage_upper == 0)
 		M.emote("[M.friendly] [src]")
 	else
+		M.do_attack_animation(src)
 		if(M.attack_sound)
 			playsound(loc, M.attack_sound, 50, 1, 1)
 		for(var/mob/O in viewers(src, null))

@@ -253,6 +253,7 @@
 	if(M.melee_damage_upper == 0)
 		M.emote("[M.friendly] [src]")
 	else
+		M.do_attack_animation(src)
 		if(M.attack_sound)
 			playsound(loc, M.attack_sound, 50, 1, 1)
 		for(var/mob/O in viewers(src, null))
@@ -308,6 +309,7 @@
 					O.show_message(text("\red [] has grabbed [] passively!", M, src), 1)
 
 		if("harm", "disarm")
+			M.do_attack_animation(src)
 			adjustBruteLoss(harm_intent_damage)
 			for(var/mob/O in viewers(src, null))
 				if ((O.client && !( O.blinded )))
@@ -357,7 +359,7 @@
 
 
 		else
-
+			L.do_attack_animation(src)
 			var/damage = rand(5, 10)
 			visible_message("\red <B>[L] bites [src]!</B>")
 
@@ -372,7 +374,7 @@
 		return
 
 	if(M.Victim) return // can't attack while eating!
-
+	M.do_attack_animation(src)
 	visible_message("\red <B>[M.name] glomps [src]!</B>")
 
 	var/damage = rand(1, 3)
@@ -416,6 +418,7 @@
 	else if(meat_type.len && (stat == DEAD))	//if the animal has a meat, and if it is dead.
 		harvest(O)
 	else
+		user.do_attack_animation(src)
 		user.changeNext_move(8)
 		if(O.force)
 			if(O.force >= force_threshold)

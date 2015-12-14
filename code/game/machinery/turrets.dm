@@ -407,6 +407,7 @@
 
 
 /obj/machinery/turret/attack_animal(mob/living/simple_animal/M as mob)
+	M.do_attack_animation(src)
 	M.changeNext_move(8)
 	if(M.melee_damage_upper == 0)	return
 	if(!(stat & BROKEN))
@@ -424,6 +425,7 @@
 
 
 /obj/machinery/turret/attack_alien(mob/living/carbon/alien/humanoid/M as mob)
+	M.do_attack_animation(src)
 	M.changeNext_move(8)
 	if(!(stat & BROKEN))
 		playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1, -1)
