@@ -26,9 +26,9 @@
 	antag_flag = BE_CULTIST
 	restricted_jobs = list("Chaplain","AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel")
 	protected_jobs = list()
-	required_players = 20
-	required_enemies = 6
-	recommended_enemies = 6
+	required_players = 15
+	required_enemies = 4
+	recommended_enemies = 4
 
 	uplink_welcome = "Nar-Sie Uplink Console:"
 	uplink_uses = 10
