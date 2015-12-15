@@ -96,7 +96,7 @@ var/const/SAFETY_COOLDOWN = 100
 	if(!I.CheckForNukeDisk())
 		qdel(I)
 		if(sound)
-			playsound(src.loc, 'sound/items/copier.ogg', 150, 1)
+			playsound(src.loc, 'sound/machines/copier.ogg', 150, 1)
 			sleep(90)
 		if(prob(60))
 			new /obj/item/stack/sheet/metal(loc)
@@ -126,7 +126,7 @@ var/const/SAFETY_COOLDOWN = 100
 	if(issilicon(L))
 		playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
 	else
-		playsound(src.loc, 'sound/effects/copier.ogg', 150, 1)
+		playsound(src.loc, 'sound/machines/copier.ogg', 150, 1)
 
 	var/gib = 1
 	// By default, the emagged recycler will gib all non-carbons. (human simple animal mobs don't count)
