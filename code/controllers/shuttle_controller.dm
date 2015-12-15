@@ -164,6 +164,8 @@ datum/shuttle_controller
 					fake_recall = 0
 					return 0
 				else if(timeleft <= 0)
+					world << sound("sound/misc/shuttle_comes.ogg", 0, 0, 0, 100)
+					sleep(10)
 					var/datum/shuttle_manager/s = shuttles["escape"]
 					s.move_shuttle()
 					location = DOCKED
@@ -172,11 +174,15 @@ datum/shuttle_controller
 					priority_announce("The Emergency Shuttle has docked with the station. You have [round(timeleft()/60,1)] minutes to board the Emergency Shuttle.", null, 'sound/AI/shuttledock.ogg', "Priority")
 			else if(timeleft <= 0) //Nothing happens if time's not up and the ship's docked or later
 				if(location == DOCKED)
+					world << sound('sound/misc/shuttle_goes.ogg', 0, 0, 0, 100)
+					sleep(55)
 					move_shuttles()
 					location = TRANSIT
 					settimeleft(SHUTTLETRANSITTIME)
 					priority_announce("The Emergency Shuttle has left the station. Estimate [round(timeleft()/60,1)] minutes until the shuttle docks at Central Command.", null, null, "Priority")
 				else if(location == TRANSIT)
+					world << sound("sound/misc/shuttle_comes.ogg",  0, 0, 0, 100)
+					sleep(10)
 					move_shuttles()
 					//message_admins("Shuttles have attempted to move to Centcom")
 					location = ENDGAME
