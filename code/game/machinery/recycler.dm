@@ -95,16 +95,17 @@ var/const/SAFETY_COOLDOWN = 100
 	I.loc = src.loc
 	if(!I.CheckForNukeDisk())
 		qdel(I)
-		if(prob(15))
-			new /obj/item/stack/sheet/metal(loc)
-		if(prob(10))
-			new /obj/item/stack/sheet/glass(loc)
-		if(prob(2))
-			new /obj/item/stack/sheet/plasteel(loc)
-		if(prob(1))
-			new /obj/item/stack/sheet/rglass(loc)
 		if(sound)
-			playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
+			playsound(src.loc, 'sound/items/copier.ogg', 150, 1)
+			sleep(90)
+		if(prob(60))
+			new /obj/item/stack/sheet/metal(loc)
+		if(prob(50))
+			new /obj/item/stack/sheet/glass(loc)
+		if(prob(40))
+			new /obj/item/stack/sheet/plasteel(loc)
+		if(prob(30))
+			new /obj/item/stack/sheet/rglass(loc)
 
 
 /obj/machinery/recycler/proc/stop(var/mob/living/L)
@@ -125,7 +126,7 @@ var/const/SAFETY_COOLDOWN = 100
 	if(issilicon(L))
 		playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
 	else
-		playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
+		playsound(src.loc, 'sound/effects/copier.ogg', 150, 1)
 
 	var/gib = 1
 	// By default, the emagged recycler will gib all non-carbons. (human simple animal mobs don't count)
