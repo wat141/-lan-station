@@ -359,7 +359,7 @@
 					if (locate(/obj/item/weapon/grab, M.grabbed_by))
 						if (prob(75))
 							var/obj/item/weapon/grab/G = pick(M.grabbed_by)
-							if (istype(G, /obj/item/weapon/grab))
+							if (istype(G, /obj/item/weapon/grab) && G.assailant != src)
 								for(var/mob/O in viewers(M, null))
 									O.show_message(text("\red [] has been pulled from []'s grip by []", G.affecting, G.assailant, src), 1)
 								//G = null
