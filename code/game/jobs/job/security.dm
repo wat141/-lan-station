@@ -171,13 +171,16 @@ Security Officer
 	minimal_access = list(access_security, access_sec_doors, access_brig, access_court) //But see /datum/job/warden/get_access()
 
 /datum/job/officer/equip_items(var/mob/living/carbon/human/H)
-	assign_sec_to_department(H)
+	if(MAP_NAME != "MiniStation") 	// sec already has lots of power on ministation, not giving them more
+		assign_sec_to_department(H)
+	else							// manually gives them clothing
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(H), slot_w_uniform)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), slot_shoes)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(H), slot_wear_suit)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), slot_gloves)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(H), slot_head)
-	H.equip_to_slot_or_del(new /obj/item/weapon/handcuffs(H), slot_s_store)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/taser(H), slot_s_store)
 	H.equip_to_slot_or_del(new /obj/item/device/flash(H), slot_l_store)
 
 	if(H.backbag == 1)
