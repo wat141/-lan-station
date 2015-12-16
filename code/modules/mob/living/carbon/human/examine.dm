@@ -204,8 +204,8 @@
 		appears_dead = 1
 		if(getorgan(/obj/item/organ/brain))//Only perform these checks if there is no brain
 			msg += "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life"
-
-			if(!key)
+/*
+			if(!key)											// it is powergaming and impossible to know whether there's a ghost inside a body/playing at the momento or not by just examining it, let that job to the morgue
 				var/foundghost = 0
 				if(mind)
 					for(var/mob/dead/observer/G in player_list)
@@ -216,6 +216,7 @@
 							break
 				if(!foundghost)
 					msg += " and [t_his] soul has departed"
+*/
 			msg += "...</span>\n"
 		else//Brain is gone, doesn't matter if they are AFK or present
 			msg += "<span class='deadsay'>It appears that [t_his] brain is missing...</span>\n"
@@ -288,7 +289,7 @@
 					if(R)
 						criminal = R.fields["criminal"]
 
-					msg += "<span class = 'deptradio'>Criminal status:</span> <a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>\n"
+						msg += "<span style='color:red'>Criminal status:</span> <a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>\n"
 
 	msg += "*---------*</span>"
 
