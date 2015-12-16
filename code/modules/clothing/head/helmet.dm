@@ -11,6 +11,17 @@
 	heat_protection = HEAD
 	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
 
+/obj/item/clothing/head/helmet/beret
+	name = "armored security beret"
+	desc = "A beret with the security insignia emblazoned on it. For officers that are inclined both toward style and safety."
+	icon_state = "beret_badge"
+
+/obj/item/clothing/head/helmet/soft_cap
+	name = "armored security cap"
+	desc = "It's baseball hat in tasteful red colour. Truly protects the head."
+	icon_state = "secsoft"
+	item_color = "sec"
+
 /obj/item/clothing/head/helmet/HoS
 	name = "head of security hat"
 	desc = "The hat of the Head of Security. For showing the officers who's in charge."
