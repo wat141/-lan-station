@@ -91,6 +91,24 @@
 
 ////////
 
+// -----------------------------
+//			Pill Collector
+// -----------------------------
+
+/obj/item/weapon/storage/bag/chem
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "pcollector"
+	name = "Pill Collector"
+	item_state = "pcollector"
+	storage_slots = 50;
+	max_combined_w_class = 200 //Doesn't matter what this is, so long as it's more or equal to storage_slots * plants.w_class
+	max_w_class = 3
+	w_class = 1
+	can_hold = list(/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/weapon/reagent_containers/pill,/obj/item/weapon/reagent_containers/syringe)
+
+
+////////
+
 /obj/item/weapon/storage/bag/plants/portaseeder
 	name = "portable seed extractor"
 	desc = "For the enterprising botanist on the go. Less efficient than the stationary model, it creates one seed per plant."
