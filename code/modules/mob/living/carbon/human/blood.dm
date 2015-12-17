@@ -46,12 +46,12 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 							B = D
 							break
 
-				B.volume += 0.1 // regenerate blood VERY slowly
+				B.volume += 0.2 // regenerate blood VERY slowly
 				if (reagents.has_reagent("nutriment"))	//Getting food speeds it up
-					B.volume += 0.4
+					B.volume += 0.8
 					reagents.remove_reagent("nutriment", 0.1)
 				if (reagents.has_reagent("iron"))	//Hematogen candy anyone?
-					B.volume += 0.8
+					B.volume += 1.6
 					reagents.remove_reagent("iron", 0.1)
 
 		//Effects of bloodloss
@@ -66,30 +66,30 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 					update_body()
 					var/word = pick("dizzy","woosey","faint")
 					src << "\red You feel [word]"
-				if(prob(2.5))
+				if(prob(1))
 					var/word = pick("dizzy","woosey","faint")
 					src << "\red You feel [word]"
 					Paralyse(2)
 				if(oxyloss < 20)
-					oxyloss += 3
+					oxyloss += 1
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 				if(!pale)
 					pale = 1
 					update_body()
 				eye_blurry += 6
-				if(oxyloss < 50)
-					oxyloss += 10
-				oxyloss += 3
-				if(prob(5))
+				if(oxyloss < 40)
+					oxyloss += 2
+				oxyloss += 1.5
+				if(prob(2.5))
 					Paralyse(rand(1,8))
 					var/word = pick("dizzy","woosey","faint")
 					src << "\red You feel extremely [word]"
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-				oxyloss += 5
-				if(prob(10))
+				oxyloss += 4
+				if(prob(2.5))
 					var/word = pick("dizzy","woosey","faint")
 					src << "\red You feel extremely [word]"
-					Weaken(10)
+					Weaken(5)
 			if(0 to BLOOD_VOLUME_SURVIVE)
 				// There currently is a strange bug here. If the mob is not below -100 health
 				// when death() is called, apparently they will be just fine, and this way it'll
@@ -100,12 +100,12 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 		for(var/obj/item/organ/limb/org in organs)
 			var/brutedamage = org.brute_dam
 
-			if(brutedamage > 20)
+			if(brutedamage > 25)
 				bloodmax += 1
-			if(brutedamage > 40)
+			if(brutedamage > 50)
+				bloodmax += 1
+			if(brutedamage > 70)
 				bloodmax += 2
-			if(brutedamage > 60)
-				bloodmax += 4
 
 		if(bleedsuppress)
 			bloodmax = 0
@@ -123,12 +123,15 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/carbon/human/proc/drip(var/amt as num)
-
-	if(!amt)
-		return
+	if(!amt) return
+	var/blergh = 0
 
 	vessel.remove_reagent("blood",amt)
-	blood_splatter(src,src)
+
+	if(amt >= rand(1,10))
+		blergh = 1
+
+	blood_splatter(src,src,blergh)
 
 /****************************************************
 				BLOOD TRANSFERS
