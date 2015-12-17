@@ -157,7 +157,7 @@ obj/effect/proc_holder/changeling/sting/LSD
 			target.hallucination = max(400, target.hallucination)
 	feedback_add_details("changeling_powers","HS")
 	return 1
-
+/*
 obj/effect/proc_holder/changeling/sting/cryo
 	name = "Cryogenic Sting"
 	desc = "We silently sting a human with a cocktail of chemicals that freeze them."
@@ -173,3 +173,4 @@ obj/effect/proc_holder/changeling/sting/cryo
 		target.reagents.add_reagent("ice", 30)
 	feedback_add_details("changeling_powers","CS")
 	return 1
+*/
