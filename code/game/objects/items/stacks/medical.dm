@@ -9,6 +9,7 @@
 	throw_range = 7
 	var/heal_brute = 0
 	var/heal_burn = 0
+	var/stop_bleeding = 0
 
 /obj/item/stack/medical/attack(mob/living/carbon/M as mob, mob/user as mob)
 
@@ -28,6 +29,10 @@
 	if (!user.IsAdvancedToolUser())
 		user << "\red You don't have the dexterity to do this!"
 		return 1
+
+	if(isliving(M))
+		if(!M.can_inject(user, 1))
+			return
 
 	if (user)
 		if (M != user)
@@ -52,6 +57,10 @@
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/limb/affecting = H.get_organ(check_zone(user.zone_sel.selecting))
 
+		if(stop_bleeding)
+			if(!H.bleedsuppress)
+				H.suppress_bloodloss(stop_bleeding)
+
 		if(affecting.status == ORGAN_ORGANIC) //Limb must be organic to be healed - RR
 			if (affecting.heal_damage(src.heal_brute, src.heal_burn, 0))
 				H.update_damage_overlays(0)
@@ -72,7 +81,7 @@
 	singular_name = "bruise pack"
 	desc = "A pack designed to treat blunt-force trauma."
 	icon_state = "brutepack"
-	heal_brute = 60
+	heal_brute = 30		// hyper nerf
 	origin_tech = "biotech=1"
 
 /obj/item/stack/medical/ointment
@@ -81,5 +90,13 @@
 	gender = PLURAL
 	singular_name = "ointment"
 	icon_state = "ointment"
-	heal_burn = 40
+	heal_burn = 20
 	origin_tech = "biotech=1"
+
+/obj/item/stack/medical/gauze
+	name = "medical gauze"
+	desc = "Very useful on stopping bleedings, but doesn't heals wounds."
+	singular_name = "medical gauze"
+	icon_state = "gauze"
+	stop_bleeding = 1200
+

@@ -151,6 +151,21 @@ MASS SPECTROMETER
 		user.show_message(text("<span class='warning'>Severe brain damage detected. Subject likely to have mental retardation.</span>"), 1)
 	else if (M.getBrainLoss() >= 10)
 		user.show_message(text("<span class='warning'>Significant brain damage detected. Subject may have had a concussion.</span>"), 1)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.vessel)
+			if(H.bloodmax)
+				user.show_message("<span class='danger'>Subject is bleeding!</span>")
+			var/blood_volume = round(H.vessel.get_reagent_amount("blood"))
+			var/blood_percent =  round((blood_volume / 560),0.01)
+			var/blood_type = H.blood_type
+			blood_percent *= 100
+			if(blood_volume <= 500 && blood_volume > 336)
+				user << "<span class='danger'>LOW blood level [blood_percent] %, [blood_volume] cl,</span> <span class='info'>type: [blood_type]</span>"
+			else if(blood_volume <= 336)
+				user << "<span class='danger'>CRITICAL blood level CRITICAL [blood_percent] %, [blood_volume] cl,</span> <span class='info'>type: [blood_type]</span>"
+			else
+				user << "<span class='info'>Blood level [blood_percent] %, [blood_volume] cl, type: [blood_type]</span>"
 
 /obj/item/device/healthanalyzer/verb/toggle_mode()
 	set name = "Switch Verbosity"

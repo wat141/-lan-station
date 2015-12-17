@@ -59,13 +59,13 @@
 					return
 
 				if(ismob(target))	//Blood!
+					var/amount = src.reagents.maximum_volume - src.reagents.total_volume
 					if(reagents.has_reagent("blood"))
 						user << "<span class='notice'>There is already a blood sample in this syringe.</span>"
 						return
 					if(istype(target, /mob/living/carbon))	//maybe just add a blood reagent to all mobs. Then you can suck them dry...With hundreds of syringes. Jolly good idea.
-						var/amount = src.reagents.maximum_volume - src.reagents.total_volume
 						var/mob/living/carbon/T = target
-						var/datum/reagent/B = new /datum/reagent/blood
+						//var/datum/reagent/B = new /datum/reagent/blood
 						if(!check_dna_integrity(T))
 							user << "<span class='notice'>You are unable to locate any blood.</span>"
 							return
@@ -77,39 +77,17 @@
 											"<span class='userdanger'>[user] is trying to take a blood sample from [target]!</span>")
 							if(!do_mob(user, target))
 								return
-						B.holder = src
-						B.volume = amount
-						//set reagent data
-						B.data["donor"] = T
+					//if(istype(target, /mob/living/carbon))	//maybe just add a blood reagent to all mobs. Then you can suck them dry...With hundreds of syringes. Jolly good idea.
 
-						/*
-						if(T.virus && T.virus.spread_type != SPECIAL)
-							B.data["virus"] = new T.virus.type(0)
-						*/
+						var/datum/reagent/B
+						B = T.take_blood(src,amount)
 
-						for(var/datum/disease/D in T.viruses)
-							if(!B.data["viruses"])
-								B.data["viruses"] = list()
-
-							B.data["viruses"] += new D.type(0, D, 1)
-
-						B.data["blood_DNA"] = copytext(T.dna.unique_enzymes,1,0)
-						if(T.resistances&&T.resistances.len)
-							B.data["resistances"] = T.resistances.Copy()
-						if(istype(target, /mob/living/carbon/human))//I wish there was some hasproperty operation...
-							var/mob/living/carbon/human/HT = target
-							B.data["blood_type"] = copytext(HT.dna.blood_type,1,0)
-						var/list/temp_chem = list()
-						for(var/datum/reagent/R in target.reagents.reagent_list)
-							temp_chem += R.name
-							temp_chem[R.name] = R.volume
-						B.data["trace_chem"] = list2params(temp_chem)
-
-						reagents.reagent_list += B
-						reagents.update_total()
-						on_reagent_change()
-						reagents.handle_reactions()
-						user.visible_message("<span class='notice'>[user] takes a blood sample from [target].</span>")
+						if (B)
+							src.reagents.reagent_list += B
+							src.reagents.update_total()
+							src.on_reagent_change()
+							src.reagents.handle_reactions()
+							user.visible_message("<span class='notice'>[user] takes a blood sample from [target].</span>")
 
 				else //if not mob
 					if(!target.reagents.total_volume)
@@ -168,11 +146,13 @@
 					reagents.reaction(target, INGEST)
 				spawn(5)
 					target.add_fingerprint(user)
-					var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-					user << "<span class='notice'>You inject [trans] unit\s of the solution. [src] now contains [reagents.total_volume] unit\s.</span>"
-					if(reagents.total_volume <= 0 && mode == SYRINGE_INJECT)
-						mode = SYRINGE_DRAW
-						update_icon()
+					var/datum/reagent/blood/B
+					for(var/datum/reagent/blood/d in src.reagents.reagent_list)
+						B = d
+						break
+					if(B && istype(target, /mob/living/carbon))
+						var/mob/living/carbon/C = target
+						C.inject_blood(src,5)
 
 
 	update_icon()

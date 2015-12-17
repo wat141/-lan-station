@@ -86,6 +86,9 @@
 	//Check if we're on fire
 	handle_fire()
 
+	//Handles blood
+	handle_blood()
+
 	//stuff in the stomach
 	handle_stomach()
 

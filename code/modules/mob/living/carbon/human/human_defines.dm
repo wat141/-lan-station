@@ -16,6 +16,7 @@
 
 	var/age = 30		//Player's age (pure fluff)
 	var/blood_type = "A+"	//Player's bloodtype (Not currently used, just character fluff)
+	var/bleedsuppress = 0	//for stopping blood loss
 
 	var/underwear = "Nude"	//Which underwear the player wants
 	var/undershirt = "Nude" //Which undershirt the player wants
