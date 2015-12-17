@@ -1,7 +1,7 @@
 //NOTE: Breathing happens once per FOUR TICKS, unless the last breath fails. In which case it happens once per ONE TICK!
 //So oxyloss healing is done once per 4 ticks while oxyloss damage is applied once per tick!
-#define HUMAN_MAX_OXYLOSS 10 		//Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
-#define HUMAN_CRIT_MAX_OXYLOSS 2.5 	//You should die in 40 ticks while on crit. Life on space is tough.
+#define HUMAN_MAX_OXYLOSS 5 		//Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
+#define HUMAN_CRIT_MAX_OXYLOSS 1 	//You should die in 100 ticks while on crit.
 
 #define HEAT_DAMAGE_LEVEL_1 5 		//Amount of damage applied when your body temperature just passes the 360.15k safety point
 #define HEAT_DAMAGE_LEVEL_2 10 		//Amount of damage applied when your body temperature passes the 400K point
