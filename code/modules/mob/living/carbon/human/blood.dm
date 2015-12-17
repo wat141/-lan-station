@@ -5,10 +5,10 @@
 var/const/BLOOD_VOLUME_SAFE = 501
 var/const/BLOOD_VOLUME_OKAY = 336
 var/const/BLOOD_VOLUME_BAD = 224
-var/const/BLOOD_VOLUME_SURVIVE = 122
+var/const/BLOOD_VOLUME_SURVIVE = 82
 
 /mob/living/carbon/human/var/datum/reagents/vessel	//Container for blood and BLOOD ONLY. Do not transfer other chems here.
-/mob/living/carbon/human/var/var/pale = 0			//Should affect how mob sprite is drawn, but currently doesn't.
+/mob/living/carbon/human/var/pale = 0			//Should affect how mob sprite is drawn, but currently doesn't.
 
 //Initializes blood vessels
 /mob/living/carbon/human/proc/make_blood()
@@ -100,12 +100,12 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 		for(var/obj/item/organ/limb/org in organs)
 			var/brutedamage = org.brute_dam
 
-			if(brutedamage > 25)
+			if(brutedamage > 30)
+				bloodmax += 0.5
+			if(brutedamage > 60)
+				bloodmax += 0.5
+			if(brutedamage > 80)
 				bloodmax += 1
-			if(brutedamage > 50)
-				bloodmax += 1
-			if(brutedamage > 70)
-				bloodmax += 2
 
 		if(bleedsuppress)
 			bloodmax = 0

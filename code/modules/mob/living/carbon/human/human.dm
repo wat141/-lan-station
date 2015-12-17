@@ -26,7 +26,7 @@
 	internal_organs += new /obj/item/organ/appendix
 	internal_organs += new /obj/item/organ/heart
 	internal_organs += new /obj/item/organ/brain
-
+	blood_type = pick("A+", "A-", "B+", "B-", "O+", "O-") // randomly generated blood type for each human
 	make_blood()
 
 	for(var/i=0;i<7;i++) // 2 for medHUDs and 5 for secHUDs
