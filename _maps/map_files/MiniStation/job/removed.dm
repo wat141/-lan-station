@@ -21,8 +21,8 @@
 /datum/job/lawyer/config_check()
 	return 0
 
-/datum/job/chaplain/config_check()
-	return 0
+///datum/job/chaplain/config_check()
+//	return 0
 
 /datum/job/chief_engineer/config_check()
 	return 0
