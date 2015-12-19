@@ -1112,7 +1112,7 @@
 "avt" = (/obj/structure/stool/bed/chair/comfy/beige,/obj/machinery/newscaster{pixel_y = 32},/turf/simulated/floor{icon_state = "grimy"},/area/hallway/secondary/exit)
 "avu" = (/turf/simulated/floor{icon_state = "grimy"},/area/hallway/secondary/exit)
 "avv" = (/obj/structure/table/woodentable,/obj/item/device/flashlight/lamp/green{pixel_x = 1; pixel_y = 5},/turf/simulated/floor{icon_state = "grimy"},/area/hallway/secondary/exit)
-"avw" = (/obj/machinery/alarm{dir = 4; pixel_x = -22},/turf/simulated/floor{icon_state = "dark"},/area/janitor)
+"avw" = (/obj/machinery/alarm{dir = 4; pixel_x = -22},/obj/structure/closet/jcloset,/turf/simulated/floor{icon_state = "dark"},/area/janitor)
 "avx" = (/obj/machinery/atmospherics/unary/vent_scrubber{on = 1},/turf/simulated/floor{icon_state = "dark"},/area/janitor)
 "avy" = (/obj/machinery/atmospherics/unary/vent_pump{on = 1},/turf/simulated/floor{icon_state = "dark"},/area/janitor)
 "avz" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/obj/machinery/door/airlock/maintenance{name = "Custodial Maintenance"; req_access_txt = "26"},/turf/simulated/floor/plating,/area/janitor)
