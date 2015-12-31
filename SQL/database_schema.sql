@@ -69,7 +69,7 @@ insert into erro_admin_ranks (rank, flags) values ('Badmin',5727);
 insert into erro_admin_ranks (rank, flags) values ('Game Admin',8063);
 insert into erro_admin_ranks (rank, flags) values ('Game Master',65535);
 insert into erro_admin_ranks (rank, flags) values ('Host',65535);
-insert into erro_admin_ranks (rank, flags) values ('Coder',5168);
+insert into erro_admin_ranks (rank, flags) values ('Coder',5170);
 
 --
 -- Table structure for table `erro_ban`
